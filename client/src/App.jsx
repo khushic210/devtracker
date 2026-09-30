@@ -1,4 +1,5 @@
 import { useTheme } from './context/ThemeContext.jsx'
+import Button from './components/ui/Button.jsx'
 
 function App() {
   const { isDark, toggleTheme } = useTheme()
@@ -8,12 +9,9 @@ function App() {
       <h1 className="text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
         DevTracker
       </h1>
-      <button
-        onClick={toggleTheme}
-        className="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-      >
+      <Button onClick={toggleTheme}>
         {isDark ? 'Switch to Light' : 'Switch to Dark'}
-      </button>
+      </Button>
     </div>
   )
 }
