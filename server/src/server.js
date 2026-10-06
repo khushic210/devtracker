@@ -1,5 +1,6 @@
 import express from 'express'
 import pool from './config/db.js'
+import authRoutes from './routes/authRoutes.js'
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -18,6 +19,8 @@ app.get('/api/db-test', async (req, res) => {
     res.status(500).json({ connected: false, error: err.message })
   }
 })
+
+app.use('/api/auth', authRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`)
