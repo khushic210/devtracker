@@ -9,6 +9,7 @@ import AppLayout from './layouts/AppLayout.jsx'
 import LandingPage from './pages/LandingPage.jsx'
 import RegisterPage from './pages/RegisterPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
+import DashboardPage from './pages/DashboardPage.jsx'
 
 const placeholder = (name) => (
   <div className="text-gray-900 dark:text-white">{name} page</div>
@@ -30,7 +31,7 @@ createRoot(document.getElementById('root')).render(
                 </ProtectedRoute>
               }
             >
-              <Route path="/dashboard" element={placeholder('Dashboard')} />
+              <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/dsa" element={placeholder('DSA')} />
               <Route path="/projects" element={placeholder('Projects')} />
               <Route path="/learning" element={placeholder('Learning')} />
