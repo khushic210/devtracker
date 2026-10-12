@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Code2, GitBranch, FolderKanban, BookOpen, BarChart3, Target } from 'lucide-react'
+import { Code2, GitBranch, FolderKanban, BookOpen, BarChart3, Target, Sun, Moon } from 'lucide-react'
 import Button from '../components/ui/Button.jsx'
 import Card from '../components/ui/Card.jsx'
 import { useTheme } from '../context/ThemeContext.jsx'
@@ -13,19 +13,36 @@ const features = [
   { icon: Target, title: 'Career Progress', desc: 'Set goals and track your path toward internships.' },
 ]
 
+const steps = [
+  'Create your profile',
+  'Connect your activity',
+  'Track goals & progress',
+  'Improve consistently',
+]
+
 function LandingPage() {
-  const { toggleTheme } = useTheme()
+  const { isDark, toggleTheme } = useTheme()
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white">
       {/* Navbar */}
       <header className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-800">
         <span className="font-bold text-lg">DevTracker</span>
-        <div className="flex items-center gap-3">
-          <button onClick={toggleTheme} className="text-sm text-gray-500 dark:text-gray-400">
-            Toggle theme
+        <div className="flex items-center gap-4">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 transition-colors"
+            aria-label="Toggle theme"
+          >
+            {isDark ? <Sun size={20} /> : <Moon size={20} />}
           </button>
-          <Link to="/dashboard">
+          <Link
+            to="/login"
+            className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:underline"
+          >
+            Login
+          </Link>
+          <Link to="/register">
             <Button>Get Started</Button>
           </Link>
         </div>
@@ -37,13 +54,17 @@ function LandingPage() {
           Track your developer journey. Build better habits.
         </h1>
         <p className="text-gray-500 dark:text-gray-400 text-lg mb-8">
-          DevTracker brings together your coding progress, learning, projects, goals, and developer analytics — all in one dashboard.
+          DevTracker brings together your coding progress, learning, projects, goals, and
+          developer analytics — all in one dashboard.
         </p>
         <div className="flex items-center justify-center gap-4">
-          <Link to="/dashboard">
+          <Link to="/register">
             <Button>Start Tracking</Button>
           </Link>
-          <a href="#features" className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:underline">
+          <a
+            href="#features"
+            className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:underline"
+          >
             Explore Features
           </a>
         </div>
@@ -67,7 +88,7 @@ function LandingPage() {
       <section className="px-6 py-16 bg-gray-50 dark:bg-gray-900">
         <h2 className="text-2xl font-bold text-center mb-10">How it works</h2>
         <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-4 gap-6 text-center">
-          {['Create your profile', 'Connect your activity', 'Track goals & progress', 'Improve consistently'].map((step, i) => (
+          {steps.map((step, i) => (
             <div key={step}>
               <div className="w-8 h-8 mx-auto mb-2 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold">
                 {i + 1}
@@ -81,7 +102,7 @@ function LandingPage() {
       {/* Final CTA */}
       <section className="text-center px-6 py-20">
         <h2 className="text-2xl font-bold mb-4">Start your developer journey today</h2>
-        <Link to="/dashboard">
+        <Link to="/register">
           <Button>Start Tracking</Button>
         </Link>
       </section>
